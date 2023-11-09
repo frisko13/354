@@ -1,0 +1,52 @@
+N
+
+
+def gcd(a, b):
+if b == 0:
+return a
+return gcd(b, a % b)
+
+def count_pairs(n):
+count = 0
+for i in range(1, int(math.sqrt(n)) + 1):
+if n % i == 0:
+j = n // i
+if n % j == 0:
+if gcd(i, j) == 1 and i * j <= n:
+count += 1
+return count
+
+n = int(input())
+print(count_pairs(n)
+
+
+
+
+
+
+
+O
+
+
+
+
+def sum_of_divisors(n):
+    # Функция для вычисления суммы делителей числа n
+    result = 0
+    for i in range(1, n):
+        if n % i == 0:
+            result += i
+    return result
+
+def find_friendly_numbers(k):
+    result = []
+    for n in range(1, k):
+        m = sum_of_divisors(n)
+        if n != m and m <= k and sum_of_divisors(m) == n:
+            result.append((n, m))
+    return result
+
+k = int(input())
+friendly_numbers = find_friendly_numbers(k)
+for numbers in friendly_numbers:
+    print(numbers[0], numbers[1])
